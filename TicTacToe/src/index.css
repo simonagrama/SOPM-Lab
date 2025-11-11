@@ -1,0 +1,140 @@
+﻿/* ---------------------------------------------------- */
+/* 1. STILIZARE GLOBALĂ ȘI FUNDAL (Culoare Pagină)      */
+/* ---------------------------------------------------- */
+body {
+    background-color: #121212; /* Fundal Dark Mode */
+    color: #e0e0e0; /* Text deschis */
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* ---------------------------------------------------- */
+/* 2. ARANJAMENT JOC ȘI STATUS                          */
+/* ---------------------------------------------------- */
+.game {
+    display: flex;
+    flex-direction: row; /* Aranjare laterală */
+    gap: 40px;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.status {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #BB86FC; /* Culoare violet deschis */
+    text-align: center;
+}
+
+/* ---------------------------------------------------- */
+/* 3. STILIZARE BUTOANE (Square) ȘI ANIMATII           */
+/* ---------------------------------------------------- */
+.board-row {
+    display: flex;
+}
+
+.square {
+    /* Dimensiuni și formă */
+    background: #2c2c2c;
+    border: 3px solid #6200EE; /* Margine puternică */
+    width: 90px;
+    height: 90px;
+    font-size: 3.5em; /* Mărește simbolurile */
+    font-weight: bold;
+    line-height: 90px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 12px;
+    margin: 2px;
+    transition: all 0.2s ease-out; /* Tranziție generală */
+    /* Pregătire pentru animația de apariție */
+    color: transparent;
+}
+
+    .square:hover {
+        background: #3a3a3a;
+        transform: scale(1.03);
+    }
+
+    .square:focus {
+        outline: none;
+    }
+
+    /* Stiluri pentru simbolurile X și O (aplicație animație) */
+    .square[data-value="X"] {
+        color: #FF5252; /* Roșu aprins pentru X */
+        animation: popIn 0.3s ease-out;
+    }
+
+    .square[data-value="O"] {
+        color: #00BCD4; /* Turcoaz pentru O */
+        animation: popIn 0.3s ease-out;
+    }
+
+/* ---------------------------------------------------- */
+/* 4. ANIMATIE: POP-IN PENTRU X ȘI O                    */
+/* ---------------------------------------------------- */
+@keyframes popIn {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* 5. EVIDENȚIEREA CÂȘTIGĂTORULUI                      */
+/* ---------------------------------------------------- */
+.square.winning-square {
+    background-color: #388E3C; /* Verde închis */
+    border-color: #4CAF50; /* Verde mai deschis */
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #4CAF50;
+}
+
+/* ---------------------------------------------------- */
+/* 6. STILIZARE ISTORIC (Mutații)                      */
+/* ---------------------------------------------------- */
+.game-info {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #2c2c2c;
+    min-width: 180px;
+}
+
+    .game-info ol {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .game-info li {
+        margin-bottom: 8px;
+    }
+
+    .game-info button {
+        background-color: #6200EE;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        width: 100%;
+        text-align: left;
+        font-size: 1em;
+    }
+
+        .game-info button:hover {
+            background-color: #3700B3;
+        }
